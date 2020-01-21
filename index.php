@@ -68,7 +68,7 @@ if(isset($_POST['submit']))
         <h1>Timestamps.Click</h1>
         <p class="lead text-muted">I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!.</p>
         <p>
-          <a href="#" target="_blank" class="btn btn-primary my-2">How does it work</a>
+          <a href="#" target="_blank" class="btn btn-primary my-2">How does it work (coming soon)</a>
           <a href="https://linkedin.com/in/souhailmerroun" target="_blank" class="btn btn-secondary my-2">Who built this</a>
         </p>
       </div>
