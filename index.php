@@ -2,8 +2,12 @@
 
 require "vendor/autoload.php";
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+/*** 
+ * This snippet is needed only in dev to load the .env locally.
+  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+  $dotenv->load();
+ * 
+*/
 
 if(isset($_POST['submit']))
 {
