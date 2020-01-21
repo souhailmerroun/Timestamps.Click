@@ -2,6 +2,9 @@
 
 require "vendor/autoload.php";
 
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";  
+$pageUrl = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];  
+
 /*** 
  * This snippet is needed only in dev to load the .env locally.
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -48,14 +51,14 @@ if(isset($_POST['submit']))
   <meta property="og:url" content="https://timestampsclick.herokuapp.com/">
   <meta property="og:title" content="Timestamps.Click - I'm the timestamps guy on Youtube">
   <meta property="og:description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
-  <meta property="og:image" content="opengraph.png">
+  <meta property="og:image" content="<?= $pageUrl; ?>opengraph.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://timestampsclick.herokuapp.com/">
   <meta property="twitter:title" content="Timestamps.Click - I'm the timestamps guy on Youtube">
   <meta property="twitter:description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
-  <meta property="twitter:image" content="opengraph.png">
+  <meta property="twitter:image" content="<?= $pageUrl; ?>opengraph.png">
 
   <link rel="icon" href="logo.png">
 </head>
