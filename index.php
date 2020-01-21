@@ -38,6 +38,26 @@ if(isset($_POST['submit']))
   <title>Timestamps.Click</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="album.css" />
+  <!-- Primary Meta Tags -->
+  <title>Timestamps.Click</title>
+  <meta name="title" content="Timestamps.Click">
+  <meta name="description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://timestampsclick.herokuapp.com/">
+  <meta property="og:title" content="Timestamps.Click">
+  <meta property="og:description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
+  <meta property="og:image" content="opengraph.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://timestampsclick.herokuapp.com/">
+  <meta property="twitter:title" content="Timestamps.Click">
+  <meta property="twitter:description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
+  <meta property="twitter:image" content="opengraph.png">
+
+  <link rel="icon" href="logo.png">
 </head>
 <body>
   <?php include('header.php') ?>
