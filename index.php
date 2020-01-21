@@ -81,7 +81,7 @@ if(isset($_POST['submit']))
       <div class="row">
         <div class="col">
           <div class="alert alert-warning" role="alert">
-            The generator is a work in progress, it can still act out weird. Please <a href="mailto:souhail.merroun1996@gmail.com">email</a> or <a href="https://twitter.com/souhailmerroun">tweet me</a> with a screenshot if you feel like something ain't right. 
+            The generator is a work in progress, it can still act out weird. Please <a href="mailto:souhail.merroun1996@gmail.com" target="_blank">email</a> or <a href="https://twitter.com/souhailmerroun" target="_blank">tweet me</a> with a screenshot if you feel like something ain't right. 
           </div>
           <hr/>
           <div class="alert alert-danger" role="alert">
