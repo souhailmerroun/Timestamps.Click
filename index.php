@@ -48,14 +48,14 @@ if(isset($_POST['submit']))
   <meta property="og:url" content="https://timestampsclick.herokuapp.com/">
   <meta property="og:title" content="Timestamps.Click - I'm the timestamps guy on Youtube">
   <meta property="og:description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
-  <meta property="og:image" content="<?= $_SERVER['REQUEST_URI'];?>/opengraph.php">
+  <meta property="og:image" content="opengraph.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://timestampsclick.herokuapp.com/">
   <meta property="twitter:title" content="Timestamps.Click - I'm the timestamps guy on Youtube">
   <meta property="twitter:description" content="I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!">
-  <meta property="twitter:image" content="<?= $_SERVER['REQUEST_URI'];?>/opengraph.php">
+  <meta property="twitter:image" content="opengraph.png">
 
   <link rel="icon" href="logo.png">
 </head>
@@ -68,7 +68,7 @@ if(isset($_POST['submit']))
         <h1>Timestamps.Click</h1>
         <p class="lead text-muted">I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!.</p>
         <p>
-          <a href="#" target="_blank" class="btn btn-primary my-2">How does it work (coming soon)</a>
+          <a href="#" disabled="disabled" target="_blank" class="disabled btn btn-primary my-2">How does it work (coming soon)</a>
           <a href="https://linkedin.com/in/souhailmerroun" target="_blank" class="btn btn-secondary my-2">Who built this</a>
         </p>
       </div>
