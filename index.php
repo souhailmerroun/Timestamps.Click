@@ -1,58 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <?php
-  if(isset($_POST['submit']))
-  {
+<?php
+
+if(isset($_POST['submit']))
+{
     $timestamps = $_POST['timestamps'];
     $video      = $_POST['video'];
     $lines      = explode("\n", $timestamps);
     $results    = [];
-    
-    foreach($lines as $line) {
-      $regex = '/([^\s]+) ([^\s]+) (.*)/';
-      preg_match($regex, $line, $parts, PREG_OFFSET_CAPTURE, 0);
-      
-      $start = $parts[1][0];
-      $end   = $parts[2][0];
-      $title = $parts[3][0];
-      
-      $temporary = "ffmpeg -ss $start -to $end -i '$video.mp4' '$title.mp4';";
-      array_push($results, $temporary);
-    }
-  }
-  ?>
 
-  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input name="video" value="Fighting Boredom and Anxiety at Work | At the Whiteboard" />
-    <textarea name="timestamps"></textarea>
-    <input name="submit" type="submit">
-  </form>
-  
-  <?php
-    if($results) {
-      ?> 
-      <p>
-      <?php
-      foreach($results as $result) {
-        ?>
-          <code><?= $result ?></code><br/>
-        <?php
-      }
-      ?>
-      </p>  
-      <?php
+    foreach($lines as $line) {
+        $regex = '/([^\s]+) ([^\s]+) (.*)/';
+        preg_match($regex, $line, $parts, PREG_OFFSET_CAPTURE, 0);
+        
+        $start = $parts[1][0];
+        $end   = $parts[2][0];
+        $title = $parts[3][0];
+        
+        $temporary = "ffmpeg -ss $start -to $end -i '$video.mp4' '$title.mp4';";
+        array_push($results, $temporary);
     }
-  ?>
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timestamps.Click</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="album.css" />
+</head>
+<body>
+  <?php include('header.php') ?>
+
+  <main role="main">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1>Timestamps.Click</h1>
+        <p class="lead text-muted">I'm the timestamps guy on Youtube. Wanna download ya favorite parts of the video? I can help you, check me out!.</p>
+        <p>
+          <a href="#" target="_blank" class="btn btn-primary my-2">How does it work</a>
+          <a href="https://linkedin.com/in/souhailmerroun" target="_blank" class="btn btn-secondary my-2">Who built this</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-warning" role="alert">
+            The generator is a work in progress, it can still act out weird. Please <a href="mailto:souhail.merroun1996@gmail.com">email</a> or <a href="https://twitter.com/souhailmerroun">tweet me</a> with a screenshot if you feel like something ain't right. 
+          </div>
+          <hr/>
+          <div class="alert alert-danger" role="alert">
+            Please avoid  using the symbols <code>'</code> and <code>&</code> as they cause broken scripts.  
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input id="title"  name="video" placeholder="Example: Free Will vs Determinism - Does Free Will Exist" class="form-control" />
+                </div>
+                <div class="form-group">  
+                  <label for="timestamps">Timestamps</label>
+                  <textarea id="timestamps" name="timestamps" placeholder="4:33 7:30 No Self Control
+9:20 11:38 Self Observation
+11:42 12:48 Assumption 
+13:03 15:32 Self Illusion
+15:35 18:33 Thoughts Source
+18:34 20:03 Behaviors Source
+21:23 22:55 Random
+..." class="form-control" rows="10"></textarea>
+                </div>
+                <input class="btn btn-primary" name="submit" type="submit" value="Gimme da script!"/>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <p style="white-space: nowrap; overflow-x: scroll;">
+                Your ready to run script: 
+                <br/> 
+                <?php
+                if($results) {
+                  ?> 
+                  <?php
+                  foreach($results as $result) {
+                    ?>
+                      <code><?= $result ?></code><br/>
+                    <?php
+                  }
+                  ?>
+                  <br/>  
+                  <?php
+                }
+                else {
+                  ?>
+                  <small>This is just an example</small> <br/>
+                  <code>ffmpeg -ss 4:33 -to 7:30 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'No Self Control .mp4'; <br/>
+                  ffmpeg -ss 9:20 -to 11:38 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'Self Observation .mp4'; <br/>
+                  ffmpeg -ss 11:42 -to 12:48 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'Assumption .mp4'; <br/>
+                  ffmpeg -ss 13:03 -to 15:32 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'Self Illusion .mp4'; <br/>
+                  ffmpeg -ss 15:35 -to 18:33 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'Thoughts Source .mp4'; <br/>
+                  ffmpeg -ss 18:34 -to 20:03 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'Behaviors Source .mp4'; <br/>
+                  ffmpeg -ss 21:23 -to 22:55 -i 'Free Will vs Determinism - Does Free Will Exist.mp4' 'Random.mp4';</code>
+                  <?php
+
+                }
+                ?>
+              </p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
   
-  <!-- 
-    - Perfectionnism:
-    - textarea single or double brackets?
-  -->
-  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
